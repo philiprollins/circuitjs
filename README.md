@@ -93,6 +93,58 @@ Known limitations of the Electron application:
 
 Thanks to @Immortalin for the initial work in applying Electron to CircuitJS1.
 
+## Docker Deployment
+
+CircuitJS1 can be easily deployed using Docker for containerized hosting. This method uses the pre-built application files in the `war/` directory and serves them using Nginx.
+
+### Prerequisites
+
+* Docker installed on your system
+* The CircuitJS1 application built (see "Building the web application" section above)
+
+### Quick Start with Docker Compose
+
+1. Ensure you have built the CircuitJS1 application using Eclipse/GWT as described above
+2. Run the following command in the project root:
+
+```bash
+docker-compose up -d
+```
+
+3. Access the application at `http://localhost:8080`
+
+### Manual Docker Build
+
+If you prefer to build and run manually:
+
+```bash
+# Build the Docker image
+docker build -t circuitjs1 .
+
+# Run the container
+docker run -d -p 8080:80 --name circuitjs1-app circuitjs1
+```
+
+### Docker Configuration
+
+The Docker setup includes:
+- **Dockerfile**: Multi-stage build using Nginx Alpine for minimal image size
+- **docker-compose.yml**: Easy container management with port mapping and health checks
+- **.dockerignore**: Optimized build context excluding unnecessary files
+
+### Accessing the Application
+
+Once the container is running:
+- Main application: `http://localhost:8080/circuitjs.html`
+- Full-page version: `http://localhost:8080/circuitjs1.html`
+- Other pages: Available at their respective paths under `http://localhost:8080/`
+
+### Customization
+
+* **Port**: Change the port mapping in `docker-compose.yml` if port 8080 is already in use
+* **Nginx Configuration**: Add custom Nginx configuration by uncommenting the COPY line in the Dockerfile
+* **SSL/TLS**: Add reverse proxy or modify Nginx configuration for HTTPS support
+
 ## License
 
 This program is free software; you can redistribute it and/or

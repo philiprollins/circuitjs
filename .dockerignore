@@ -1,0 +1,36 @@
+# Exclude version control
+.git
+.gitignore
+.gitattributes
+
+# Keep Eclipse project files (needed for Docker build)
+# .classpath
+# .project
+# .settings/
+
+# Keep source code (needed for Docker build)
+# src/
+
+# Exclude test files
+tests/
+
+# Exclude documentation (optional, but keeps image smaller)
+*.md
+COPYING.txt
+CONTRIBUTING.md
+INTERNALS.md
+
+# Exclude Electron app files (since we're containerizing the web version)
+app/
+
+# Exclude build artifacts that aren't needed
+*.log
+*.tmp
+
+# Exclude IDE files
+.vscode/
+.idea/
+
+# Exclude OS files
+.DS_Store
+Thumbs.db
