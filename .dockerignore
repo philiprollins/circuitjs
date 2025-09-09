@@ -3,13 +3,13 @@
 .gitignore
 .gitattributes
 
-# Keep Eclipse project files (needed for Docker build)
-# .classpath
-# .project
-# .settings/
+# Exclude Eclipse project files
+.classpath
+.project
+.settings/
 
-# Keep source code (needed for Docker build)
-# src/
+# Exclude source code (since we only need the built war/ directory)
+src/
 
 # Exclude test files
 tests/
